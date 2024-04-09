@@ -16,8 +16,13 @@ const scores = [
 // 66
 // ==========================================
 
+// for (let i = 0; i < scores.length; i++) {
+//     console.log(scores[i].score);
+// }
 
-
+scores.forEach(score => {
+    console.log(score.score);
+});
 
 
 // ==========================================
@@ -32,9 +37,19 @@ const scores = [
 // D
 // ==========================================
 
-
-
-
+for (let i = 0; i < scores.length; i++) {
+    if (scores[i].score >= 90) {
+        console.log("A");
+    } else if (scores[i].score >= 80) {
+        console.log("B");
+    } else if (scores[i].score >= 70) {
+        console.log("C");
+    } else if (scores[i].score >= 60) {
+        console.log("D");
+    } else if (scores[i].score >= 0) {
+        console.log("F");
+    }
+}
 
 // ==========================================
 // Opdracht 1c
@@ -49,9 +64,48 @@ const scores = [
 //  ];
 // ==========================================
 
+for (let i = 0; i < scores.length; i++) {
+    let grade;
 
+    if (scores[i].score >= 90) {
+        grade = "A";
+    } else if (scores[i].score >= 80) {
+        grade = "B";
+    } else if (scores[i].score >= 70) {
+        grade = "C";
+    } else if (scores[i].score >= 60) {
+        grade = "D";
+    } else if (scores[i].score >= 0) {
+        grade = "F";
+    }
 
+    scores[i].grade = grade;
+}
 
+console.log(scores);
+
+const gradeThresholds = [
+    { score: 90, grade: 'A' },
+    { score: 80, grade: 'B' },
+    { score: 70, grade: 'C' },
+    { score: 60, grade: 'D' },
+    { score: 0, grade: 'F' }
+];
+
+for (let i = 0; i < scores.length; i++) {
+    let grade = 'F'; // Standaardgraad is 'F'
+
+    for (let j = 0; j < gradeThresholds.length; j++) {
+        if (scores[i].score >= gradeThresholds[j].score) {
+            grade = gradeThresholds[j].grade;
+            break; // Stop de lus zodra een passende drempelwaarde is gevonden
+        }
+    }
+
+    scores[i].grade = grade;
+}
+
+console.log(scores);
 
 // ==========================================
 // Opdracht 2
@@ -75,9 +129,11 @@ const NOVIEmployees = [
 //  ];
 // ==========================================
 
+NOVIEmployees.forEach((noviEmployee) => {
+    noviEmployee.email = `${noviEmployee.firstName}.${noviEmployee.lastName}@novi.nl`;
+});
 
-
-
+console.log(NOVIEmployees);
 
 
 // Opdracht 2-BONUS
@@ -85,8 +141,11 @@ const NOVIEmployees = [
 // ==========================================
 
 
+NOVIEmployees.forEach((noviEmployee) => {
+    noviEmployee.email = `${noviEmployee.firstName}.${noviEmployee.lastName}@novi.nl`.toLowerCase();
+});
 
-
+console.log(NOVIEmployees);
 // ==========================================
 // Opdracht 3
 // Schrijf een script die de property "neighborhood" (de buurt) invult op basis van de postcode van onze studenten.
@@ -113,6 +172,44 @@ const students = [
     {name: 'Aicha', city: 'Utrecht', zipCode: '3514', neighborhood: null},
     {name: 'Karima', city: 'Utrecht', zipCode: '3531', neighborhood: null},
 ];
+
+// for (let i = 0; i < students.length; i++) {
+//     if (students[i].zipCode === '3513') {
+//         students[i].neighborhood = "Pijlsweerd";
+//     } else if (students[i].zipCode === '3514') {
+//         students[i].neighborhood = "Vogelenbuurt";
+//     }  else if (students[i].zipCode === '3512') {
+//         students[i].neighborhood = "Binnenstad";
+//     }  else if (students[i].zipCode === '3531') {
+//         students[i].neighborhood = "Lombok";
+//     }  else if (students[i].zipCode === '3572') {
+//         students[i].neighborhood = "Wittevrouwen";
+//     }  else if (students[i].zipCode === '3581') {
+//         students[i].neighborhood = "Oudwijk";
+//     }  else if (students[i].zipCode === '3583') {
+//         students[i].neighborhood = "Schildersbuurt";
+//     }
+// }
+
+const zipCodeNeighborhoodMap = {
+    '3513' : "Pijlsweerd",
+    '3514' : "Vogelenbuurt",
+    '3512' : "Binnenstad",
+    '3531' : "Lombok",
+    '3572' : "Wittevrouwen",
+    '3581' : "Oudwijk",
+    '3583' : "Schildersbuurt"
+}
+
+students.forEach(student => {
+    const neighborhood = zipCodeNeighborhoodMap[student.zipCode];
+    if (neighborhood) {
+        student.neighborhood = neighborhood;
+    }
+});
+
+
+console.log(students);
 
 // Verwachte uitkomsten:
 // [
