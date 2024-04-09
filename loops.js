@@ -10,8 +10,11 @@
 // Tip: je kunt de .repeat() methode gebruiken om een karakter een n aantal keer te herhalen...
 // Dit heb je nog niet geleerd, maar bekijk hiervoor dit MDN-artikel eens: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat
 // ==========================================
+const ster = "*";
 
-
+for (let i = 1; i <= 5; i++) {
+    console.log(ster.repeat(i));
+}
 
 
 
@@ -25,7 +28,13 @@
 // klaar!
 // ==========================================
 
-
+for (let i = 1; i <= 5; i++) {
+    if (i < 5) {
+        console.log("loop...");
+    } else {
+        console.log("klaar!");
+    }
+}
 
 
 
@@ -46,13 +55,34 @@
 // ==========================================
 
 
-
+for (let i = 0; i <= 9; i++) {
+    if (i < 3) {
+        console.log(i);
+    } else if (i >= 3 && i < 6) {
+        console.log(`> ${i}`);
+    } else {
+        console.log(`>> ${i}`);
+    }
+}
 
 
 // ==========================================
 // Opdracht 4 (BONUS): schrijf een for-loop die van 0 tot 100 loopt en de getallen print.
 // Echter, voor veelvouden van 3 print je "Fizz" in plaats van het nummer, en voor veelvouden van 5 print je "Buzz".
 // Voor getallen die zowel een veelvoud van 3 als van 5 zijn, print je "FizzBuzz"
+
+for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0) {
+        console.log("Fizz")
+    } else if (i % 5 === 0) {
+        console.log("Buzz");
+    } else {
+        console.log(i);
+    }
+}
+
+
+
 // Verwachte uitkomsten:
 // 1
 // 2
